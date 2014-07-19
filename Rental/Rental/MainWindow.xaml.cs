@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Rental
 {
@@ -23,6 +24,10 @@ namespace Rental
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                this.clock.Text = DateTime.Now.ToString();
+            }, this.Dispatcher);
         }
     }
 }
