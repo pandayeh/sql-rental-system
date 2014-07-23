@@ -1,0 +1,38 @@
+﻿<Window x:Class="Rental.Inventory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Inventory" Height="720" Width="1280">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Data">
+                    <MenuItem Header="_New Item"/>
+                    <MenuItem Header="_Edit Item"/>
+                    <MenuItem Header="_Delete Item"/>
+                    <Separator />
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
+
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="_Search"/>
+                    <MenuItem Header="_Barcode"/>
+                </MenuItem>
+
+                <MenuItem Header="_Records">
+                    <MenuItem Header="_New Releases"/>
+                    <MenuItem Header="_Short in Stock"/>
+                    <MenuItem Header="_Lost"/>
+                    <MenuItem Header="_Item Rental Record"/>
+                </MenuItem>
+
+                <MenuItem Header="_Setup">
+                    <MenuItem Header="_Setup Type"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        <DataGrid VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="0,22,0,-22" Height="600" Width="1050">
+            
+        </DataGrid>
+    </Grid>
+</Window>
