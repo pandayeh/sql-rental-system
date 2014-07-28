@@ -20,8 +20,8 @@ namespace Rental
         public DataTable GetDataTable(string sql)
         {
             DataTable dt = new DataTable();
-            try
-            {
+            //try
+            //{
                 con = new SQLiteConnection(dbfile);
                 con.Open();
                 SQLiteCommand command = new SQLiteCommand(con);
@@ -29,12 +29,12 @@ namespace Rental
                 SQLiteDataReader reader = command.ExecuteReader();
                 dt.Load(reader);
                 reader.Close();
-                con.Close();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Failed to get table.");
-            }
+            //    con.Close();
+            //}
+            //catch (Exception e)
+            //{
+            //    throw new Exception("Failed to get table.");
+            //}
             return dt;
         }
 

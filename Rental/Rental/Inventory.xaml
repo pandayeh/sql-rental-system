@@ -1,39 +1,80 @@
 ﻿<Window x:Class="Rental.Inventory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Inventory" Height="720" Width="1280">
-    <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_Data">
-                    <MenuItem Header="_New Item"/>
-                    <MenuItem Header="_Edit Item"/>
-                    <MenuItem Header="_Delete Item"/>
-                    <Separator />
-                    <MenuItem Header="_Exit"/>
-                </MenuItem>
+        Background="LightGray"
+        WindowState="Maximized"
+        Title="Inventory" Height="1080" Width="1920">
+    <ScrollViewer>
+        <Grid>
+            <DockPanel>
+                <Menu DockPanel.Dock="Top">
+                    <MenuItem Header="_Data">
+                        <MenuItem Header="_New Item"/>
+                        <MenuItem Header="_Edit Item"/>
+                        <MenuItem Header="_Delete Item"/>
+                        <Separator />
+                        <MenuItem Header="_Exit"/>
+                    </MenuItem>
 
-                <MenuItem Header="_Tools">
-                    <MenuItem Header="_Search"/>
-                    <MenuItem Header="_Barcode"/>
-                </MenuItem>
+                    <MenuItem Header="_Tools">
+                        <MenuItem Header="_Search"/>
+                        <MenuItem Header="_Barcode"/>
+                    </MenuItem>
 
-                <MenuItem Header="_Records">
-                    <MenuItem Header="_New Releases"/>
-                    <MenuItem Header="_Short in Stock"/>
-                    <MenuItem Header="_Lost"/>
-                    <MenuItem Header="_Item Rental Record"/>
-                </MenuItem>
+                    <MenuItem Header="_Records">
+                        <MenuItem Header="_New Releases"/>
+                        <MenuItem Header="_Short in Stock"/>
+                        <MenuItem Header="_Lost"/>
+                        <MenuItem Header="_Item Rental Record"/>
+                    </MenuItem>
 
-                <MenuItem Header="_Setup">
-                    <MenuItem Header="_Setup Type"/>
-                </MenuItem>
-            </Menu>
-            <StackPanel></StackPanel>
-        </DockPanel>
-        <DataGrid VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="0,22,0,0" Height="668" Width="1050"
-                  Name="gridInv" ItemsSource="{Binding}">
+                    <MenuItem Header="_Setup">
+                        <MenuItem Header="_Setup Type"/>
+                    </MenuItem>
+                </Menu>
+                <StackPanel></StackPanel>
+            </DockPanel>
+            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                  Name="gridInv" ItemsSource="{Binding}" Margin="0,22,207,0">
+            </DataGrid>
 
-        </DataGrid>
-    </Grid>
+            <Border HorizontalAlignment="Right" Margin="0,22,0,0" BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Vertical" Width="200">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="0,20,0,0"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <TextBox Height="50" Width="200"
+                         TextAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Background="LightGray" 
+                         IsReadOnly="True"
+                         Name="clock">
+                    </TextBox>
+
+                    <TextBox Margin="15,25,15,15" Height="25" Width="170">
+                        <TextBox.Triggers>
+                            <EventTrigger RoutedEvent="GotFocus">
+
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="LostFocus">
+
+                            </EventTrigger>
+                        </TextBox.Triggers>
+                    </TextBox>
+
+                    <Button Height="50" Width="100" Click="NewItem_Click">New Item</Button>
+                    <Button Height="50" Width="100">Edit</Button>
+                    <Button Height="50" Width="100">Delete</Button>
+                    <Button Height="50" Width="100">Search</Button>
+                    <Button Height="50" Width="100">Details</Button>
+                    <Button Height="50" Width="100">Serials</Button>
+                    <Button Height="50" Width="100">Exit</Button>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </Window>
