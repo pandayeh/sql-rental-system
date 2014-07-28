@@ -21,7 +21,8 @@
                     <MenuItem Header="New Customer"/>
                     <MenuItem Header="Manage Customers"/>
                     <Separator />
-                    <MenuItem Header="Manage Inventory"/>
+                    <MenuItem Header="Manage Inventory"
+                              Click="ManageInventory_Click"/>
                     <MenuItem Header="New Item"/>
                     <MenuItem Header="Rented-Out Log"/>
                 </MenuItem>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using System.Data.SQLite;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +23,10 @@ namespace Rental
         public Inventory()
         {
             InitializeComponent();
+            SQLiteHelper helper = new SQLiteHelper();
+            DataTable invTable = helper.GetDataTable("SELECT * FROM series");
+            gridInv.DataContext = invTable.DefaultView;
+
         }
     }
 }

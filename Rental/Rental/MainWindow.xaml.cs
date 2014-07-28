@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SQLite;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,8 +28,12 @@ namespace Rental
             {
                 this.clock.Text = DateTime.Now.ToString();
             }, this.Dispatcher);
+        }
 
-
+        private void ManageInventory_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory win = new Inventory();
+            win.Show();
         }
     }
 }
