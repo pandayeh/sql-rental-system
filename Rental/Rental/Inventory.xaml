@@ -31,8 +31,8 @@
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
-        <DataGrid VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="0,22,0,-22" Height="600" Width="1050">
-            
+        <DataGrid VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="0,22,0,0" Height="658" Width="1050">
+
         </DataGrid>
     </Grid>
 </Window>
