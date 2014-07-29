@@ -41,7 +41,7 @@ namespace Rental
 
         private void NewItem_Click(object sender, RoutedEventArgs e)
         {
-            NewItem win = new NewItem();
+            NewSeries win = new NewSeries();
             win.Show();
         }
     }

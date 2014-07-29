@@ -74,8 +74,11 @@
     <Compile Include="Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewItem.xaml.cs">
-      <DependentUpon>NewItem.xaml</DependentUpon>
+    <Compile Include="NewSeries.xaml.cs">
+      <DependentUpon>NewSeries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Serials.xaml.cs">
+      <DependentUpon>Serials.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLiteHelper.cs" />
     <Page Include="MainWindow.xaml">
@@ -94,7 +97,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewItem.xaml">
+    <Page Include="NewSeries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Serials.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

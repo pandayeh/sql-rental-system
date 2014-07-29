@@ -17,9 +17,9 @@ namespace Rental
     /// <summary>
     /// Interaction logic for NewItem.xaml
     /// </summary>
-    public partial class NewItem : Window
+    public partial class NewSeries : Window
     {
-        public NewItem()
+        public NewSeries()
         {
             InitializeComponent();
         }
