@@ -20,13 +20,13 @@
                 </StackPanel.Resources>
 
                 
-                <Button Height="25" Width="80" Click="NewItem_Click">Delete Serial</Button>
-                <Button Height="25" Width="80" Click="NewItem_Click">Edit Serial</Button>
+                <!--<Button Height="25" Width="80" Click="Delete_Click">Delete Serial</Button>
+                <Button Height="25" Width="80" Click="Edit_Click">Edit Serial</Button>
                 <Button Height="25" Width="80" Click="NewItem_Click">Add Set</Button>
                 <Button Height="25" Width="80" Click="NewItem_Click">Delete Set</Button>
                 <Button Height="25" Width="80" Click="NewItem_Click">Copy Serial</Button>
                 <Button Height="25" Width="80" Click="NewItem_Click">Add Serial</Button>
-                <Button Height="25" Width="80" Click="NewItem_Click">Finish</Button>
+                <Button Height="25" Width="80" Click="NewItem_Click">Finish</Button>-->
 
             </StackPanel>
         </Border>

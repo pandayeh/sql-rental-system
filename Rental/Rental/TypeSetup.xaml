@@ -1,0 +1,48 @@
+﻿<Window x:Class="Rental.Type_Setup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Type_Setup" Height="300" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="0" Grid.Column="0"
+                  Name="gridTypes" ItemsSource="{Binding}">
+        </DataGrid>
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   Name="textRate" >
+            
+        </TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2"
+                   Name="textMember" >
+
+        </TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="3"
+                   Name="textHot" >
+
+        </TextBlock>
+        <Button Grid.Row="1" Grid.Column="0" Height="35" Width="100"
+                Click="NewClick">
+            New Type
+        </Button>
+        <Button Grid.Row="1" Grid.Column="1" Height="35" Width="100"
+                Click="EditClick">
+            Edit Type
+        </Button>
+        <Button Grid.Row="1" Grid.Column="2" Height="35" Width="100"
+                Click="DeleteClick">
+            Delete Type
+        </Button>
+        <Button Grid.Row="1" Grid.Column="3" Height="35" Width="100"
+                Click="CloseClick">
+            Close
+        </Button>
+    </Grid>
+</Window>

@@ -77,10 +77,16 @@
     <Compile Include="NewSeries.xaml.cs">
       <DependentUpon>NewSeries.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewType.xaml.cs">
+      <DependentUpon>NewType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Serials.xaml.cs">
       <DependentUpon>Serials.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLiteHelper.cs" />
+    <Compile Include="TypeSetup.xaml.cs">
+      <DependentUpon>TypeSetup.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,7 +107,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NewType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Serials.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypeSetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
