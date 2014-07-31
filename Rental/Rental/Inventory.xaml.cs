@@ -32,9 +32,9 @@ namespace Rental
 
             SQLiteHelper helper = new SQLiteHelper();
             DataTable invTable = helper.GetDataTable( //TODO: Implement volume sets
-                "SELECT types.name AS Type, series.title AS Title, serials.volume AS Volume, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, serials.serial AS Serial, series.reference AS Reference, serials.price AS Price " + 
-                "FROM serials, series, types " + 
-                "WHERE series.seriesId=serials.seriesId AND types.typeId=series.typeId");
+                "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
+                "FROM series, types " + 
+                "WHERE types.typeId=series.typeId");
             gridInv.DataContext = invTable.DefaultView;
 
         }

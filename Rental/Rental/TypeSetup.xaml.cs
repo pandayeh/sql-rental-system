@@ -24,22 +24,22 @@ namespace Rental
             InitializeComponent();
         }
 
-        private void NewClick(object sender, RoutedEventArgs e)
+        private void New_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void EditClick(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void DeleteClick(object sender, RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void CloseClick(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
 
         }

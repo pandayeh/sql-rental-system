@@ -29,19 +29,19 @@
 
         </TextBlock>
         <Button Grid.Row="1" Grid.Column="0" Height="35" Width="100"
-                Click="NewClick">
+                Click="New_Click">
             New Type
         </Button>
         <Button Grid.Row="1" Grid.Column="1" Height="35" Width="100"
-                Click="EditClick">
+                Click="Edit_Click">
             Edit Type
         </Button>
         <Button Grid.Row="1" Grid.Column="2" Height="35" Width="100"
-                Click="DeleteClick">
+                Click="Delete_Click">
             Delete Type
         </Button>
         <Button Grid.Row="1" Grid.Column="3" Height="35" Width="100"
-                Click="CloseClick">
+                Click="Close_Click">
             Close
         </Button>
     </Grid>

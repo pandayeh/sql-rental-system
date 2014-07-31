@@ -1,13 +1,14 @@
 ﻿<Window x:Class="Rental.NewType"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="NewType" Height="350" Width="600">
+        Title="NewType" Height="400" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="6*" />
             <RowDefinition Height="6*" />
             <RowDefinition Height="6*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -19,44 +20,58 @@
         <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="39,0,0,0"/>
         <GroupBox Header="Rental Rate" Grid.Row="1" Grid.Column="0">
             <StackPanel Orientation="Vertical">
-                
+
                 <StackPanel Orientation="Horizontal">
                     <RadioButton GroupName="rent" Margin="5">Flat Price</RadioButton>
                     <TextBox Name="rentFlat" Height="20" Width="70"></TextBox>
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Horizontal">
                     <RadioButton GroupName="rent" Margin="5" IsChecked="True">Multiplier x</RadioButton>
                     <TextBox Name="rentMulti" Height="20" Width="70"></TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>For every </TextBlock>
+                    <TextBlock>For every</TextBlock>
                     <TextBox Name="rentQuantity" Height="20" Width="30"></TextBox>
-                    <TextBlock> movies you can rent </TextBlock>
+                    <TextBlock> movies you can rent</TextBlock>
                     <TextBox Name="rentDays" Height="20" Width="30"></TextBox>
                     <TextBlock> days.</TextBlock>
                 </StackPanel>
 
             </StackPanel>
         </GroupBox>
-        
-        <GroupBox Header="New Release Rate" Grid.Row="2" Grid.Column="0">
+
+        <GroupBox Header="New Release Rate" Grid.Row="2" Grid.Column="0" Margin="0,0,0,89" Grid.RowSpan="2">
             <StackPanel Orientation="Vertical">
 
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="hot" Margin="5" IsChecked="True">Rent Out </RadioButton>
-                    <TextBox Name="hotDays" Height="20" Width="30"></TextBox>
-                    <TextBlock Margin="5">days</TextBlock>
+                    <RadioButton GroupName="hot" Margin="5">Flat Price</RadioButton>
+                    <TextBox Name="hotFlat" Height="20" Width="70"></TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="hot" Margin="5">Can't Rent Out</RadioButton>
+                    <RadioButton GroupName="hot" Margin="5" IsChecked="True">Multiplier x</RadioButton>
+                    <TextBox Name="hotMulti" Height="20" Width="70"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>For every</TextBlock>
+                    <TextBox Name="hotQuantity" Height="20" Width="30"></TextBox>
+                    <TextBlock> movies you can rent</TextBlock>
+                    <TextBox Name="hotDays" Height="20" Width="30"></TextBox>
+                    <TextBlock> days.</TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock>Keep new for</TextBlock>
+                    <TextBox Name="hotLength" Height="20" Width="30"></TextBox>
+                    <TextBlock> days</TextBlock>
                 </StackPanel>
 
             </StackPanel>
         </GroupBox>
-        
+
         <GroupBox Header="In-Store Rent" Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Vertical">
 
@@ -72,7 +87,7 @@
 
             </StackPanel>
         </GroupBox>
-        
+
         <GroupBox Header="Deposit Value" Grid.Row="2" Grid.Column="1">
             <StackPanel Orientation="Vertical">
 
@@ -88,7 +103,7 @@
 
             </StackPanel>
         </GroupBox>
-        
+
         <GroupBox Header="Overdue Fee" Grid.Row="3" Grid.Column="1">
             <StackPanel Orientation="Vertical">
 
@@ -103,21 +118,31 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Increase fee every </TextBlock>
+                    <TextBlock>Increase fee every</TextBlock>
                     <TextBox Name="overdueDays" Height="20" Width="30"></TextBox>
                     <TextBlock> days.</TextBlock>
                 </StackPanel>
 
             </StackPanel>
         </GroupBox>
-        <Grid Grid.Row="3" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            
-            <Button Grid.Column="0" Height="30" Width="100"> OK </Button>
-            <Button Grid.Column="1" Height="30" Width="100"> Cancel </Button>
-        </Grid>
+
+        <GroupBox Header="Membership Rate" Grid.Row="3" Grid.Column="0" Margin="0,21,0,0">
+            <StackPanel Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="member" Margin="5">Flat Price</RadioButton>
+                    <TextBox Name="memberFlat" Height="20" Width="70"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="member" Margin="5" IsChecked="True">Multiplier x</RadioButton>
+                    <TextBox Name="memberMulti" Height="20" Width="70"></TextBox>
+                </StackPanel>
+
+            </StackPanel>
+        </GroupBox>
+        <Button Grid.Row="4" Grid.Column="0" Height="30" Width="100">OK</Button>
+        <Button Grid.Row="4" Grid.Column="1" Height="30" Width="100">Cancel</Button>
+
     </Grid>
 </Window>

@@ -20,15 +20,42 @@ namespace Rental
     /// </summary>
     public partial class Serials : Window
     {
-        public Serials()
+        private int seriesId;
+        public Serials(int i)
         {
             InitializeComponent();
+            seriesId = i;
             SQLiteHelper helper = new SQLiteHelper();
-            DataTable invTable = helper.GetDataTable( //TODO: Implement volume sets
-                "SELECT types.name AS Type, series.title AS Title, serials.volume AS Volume, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, serials.serial AS Serial, series.reference AS Reference, serials.price AS Price " +
-                "FROM serials, series, types " +
-                "WHERE series.seriesId=serials.titleId AND types.typeId=series.typeId");
+            DataTable invTable = helper.GetDataTable(
+                "SELECT serials.setIndex AS Set, serials.volume AS Volume, serials.serial AS Serial, serials.price AS Price, serials.hotPrice AS Hot Price, serials.hot AS Hot " +
+                "FROM serials, series " +
+                "WHERE " + seriesId + "=serials.seriesId");
             gridSerial.DataContext = invTable.DefaultView;
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Finish_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
