@@ -71,8 +71,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CompanyInfoSetup.xaml.cs">
+      <DependentUpon>CompanyInfoSetup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipSetup.xaml.cs">
+      <DependentUpon>MembershipSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewMembership.xaml.cs">
+      <DependentUpon>NewMembership.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewSeries.xaml.cs">
       <DependentUpon>NewSeries.xaml</DependentUpon>
@@ -87,6 +96,10 @@
     <Compile Include="TypeSetup.xaml.cs">
       <DependentUpon>TypeSetup.xaml</DependentUpon>
     </Compile>
+    <Page Include="CompanyInfoSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +113,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MembershipSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewMembership.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,8 +10,8 @@ namespace Rental
 {
     class SQLiteHelper
     {
-        string dbfile;
-        SQLiteConnection con;
+        private string dbfile;
+        private SQLiteConnection con;
         public SQLiteHelper() {
             dbfile = @"Data Source=C:\Users\Panda\Source\Repos\sql-rental-system\Rental\Rental.sqlite";
 
@@ -36,6 +36,31 @@ namespace Rental
             //    throw new Exception("Failed to get table.");
             //}
             return dt;
+        }
+
+        public string ExecuteScalar(string sql)
+        {
+            con = new SQLiteConnection(dbfile);
+            con.Open();
+            SQLiteCommand command = new SQLiteCommand(con);
+            command.CommandText = sql;
+            object value = command.ExecuteScalar();
+            con.Close();
+            if (value != null)
+                return value.ToString();
+            return "";
+
+        }
+
+        public int ExecuteNonQuery(string sql)
+        {
+            con = new SQLiteConnection(dbfile);
+            con.Open();
+            SQLiteCommand command = new SQLiteCommand(con);
+            command.CommandText = sql;
+            int rowsUpdated = command.ExecuteNonQuery();
+            con.Close();
+            return rowsUpdated;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Rental
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static SQLiteHelper helper = new SQLiteHelper();
         public MainWindow()
         {
             InitializeComponent();
@@ -28,12 +30,24 @@ namespace Rental
             {
                 this.clock.Text = DateTime.Now.ToString();
             }, this.Dispatcher);
+
+            
+            companyname.DataContext = helper.ExecuteScalar("SELECT name FROM companyinfo");
+            
+
         }
 
         private void ManageInventory_Click(object sender, RoutedEventArgs e)
         {
             Inventory win = new Inventory();
-            win.Show();
+            win.ShowDialog();
+        }
+
+        private void CompanyInfo_Click(object sender, RoutedEventArgs e)
+        {
+            CompanyInfoSetup win = new CompanyInfoSetup();
+            win.ShowDialog();
+            companyname.DataContext = helper.ExecuteScalar("SELECT name FROM companyinfo");
         }
     }
 }

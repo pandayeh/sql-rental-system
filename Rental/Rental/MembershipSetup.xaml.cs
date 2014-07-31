@@ -16,24 +16,19 @@ using System.Windows.Shapes;
 namespace Rental
 {
     /// <summary>
-    /// Interaction logic for Serials.xaml
+    /// Interaction logic for MembershipSetup.xaml
     /// </summary>
-    public partial class Serials : Window
+    public partial class MembershipSetup : Window
     {
-        private int seriesId;
-        public Serials(int i)
+        public MembershipSetup()
         {
             InitializeComponent();
-            seriesId = i;
             SQLiteHelper helper = new SQLiteHelper();
-            DataTable table = helper.GetDataTable(
-                "SELECT serials.setIndex AS Set, serials.volume AS Volume, serials.serial AS Serial, serials.price AS Price, serials.hotPrice AS Hot Price, serials.hot AS Hot " +
-                "FROM serials, series " +
-                "WHERE " + seriesId + "=serials.seriesId");
-            gridSerial.DataContext = table.DefaultView;
+            DataTable table = helper.GetDataTable("SELECT types.name AS Type FROM types");
+            gridMemberships.DataContext = table.DefaultView;
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void New_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -44,11 +39,6 @@ namespace Rental
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Copy_Click(object sender, RoutedEventArgs e)
         {
 
         }

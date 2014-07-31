@@ -31,11 +31,11 @@ namespace Rental
             }, this.Dispatcher);
 
             SQLiteHelper helper = new SQLiteHelper();
-            DataTable invTable = helper.GetDataTable( //TODO: Implement volume sets
+            DataTable table = helper.GetDataTable( //TODO: Implement volume sets
                 "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
                 "FROM series, types " + 
                 "WHERE types.typeId=series.typeId");
-            gridInv.DataContext = invTable.DefaultView;
+            gridInv.DataContext = table.DefaultView;
 
         }
 

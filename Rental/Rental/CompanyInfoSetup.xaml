@@ -1,0 +1,44 @@
+﻿<Window x:Class="Rental.CompanyInfoSetup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        FocusManager.FocusedElement="{Binding ElementName=name}"
+        Title="CompanyInfoSetup" Height="150" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0">Name: </TextBlock>
+        <TextBox Name="name" Grid.Row="0" Grid.ColumnSpan="2" Margin="42,0,0,0" />
+        
+        <GroupBox Header="Rent Day Limit" Grid.Row="1" Grid.Column="0">
+            <StackPanel>
+                <RadioButton Name="days1" GroupName="days">No Limit</RadioButton>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Name="days2" GroupName="days" IsChecked="true">Max </RadioButton>
+                    <TextBox Name="rentDays" Margin="5,0,5,0" Width="27" Text="7" />
+                    <TextBlock>days</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Rent Quantity Limit" Grid.Row="1" Grid.Column="1">
+            <StackPanel>
+                <RadioButton Name="quantity1" GroupName="quantity" IsChecked="true">No Limit</RadioButton>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Name="quantity2" GroupName="quantity">Max</RadioButton>
+                    <TextBox Name="rentQuantity" Margin="5,0,5,0" Width="27" />
+                    <TextBlock>items</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        
+        <Button Grid.Row="2" Grid.Column="0" Width="80" Click="OK_Click" IsDefault="True">OK</Button>
+        <Button Grid.Row="2" Grid.Column="1" Width="80" Click="Cancel_Click" IsCancel="True">Cancel</Button>
+    </Grid>
+</Window>
