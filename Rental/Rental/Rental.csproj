@@ -80,6 +80,9 @@
     <Compile Include="MembershipSetup.xaml.cs">
       <DependentUpon>MembershipSetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewCustomer.xaml.cs">
+      <DependentUpon>NewCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewMembership.xaml.cs">
       <DependentUpon>NewMembership.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MembershipSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
