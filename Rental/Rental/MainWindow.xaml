@@ -46,8 +46,8 @@
                 </Menu>
                 <StackPanel></StackPanel>
             </DockPanel>
-            
-            <TextBlock Name="companyname" Text="{Binding Mode=OneWay}" HorizontalAlignment="Center" Margin="0,22,0,0" FontSize="120" Foreground="Crimson" FontFamily="Oceania"  Height="Auto" Width="Auto" />
+
+            <TextBlock Name="companyname" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,22,0,0" FontSize="120" Foreground="Crimson" FontFamily="Oceania"  Height="Auto" Width="Auto" />
 
             <Border HorizontalAlignment="Right" Margin="0,22,0,0" BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Vertical">

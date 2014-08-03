@@ -35,7 +35,7 @@
                 <StackPanel></StackPanel>
             </DockPanel>
             <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                  Name="gridInv" ItemsSource="{Binding}" Margin="0,22,207,0">
+                  Name="gridInv" ItemsSource="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="0,22,207,0">
             </DataGrid>
 
             <Border HorizontalAlignment="Right" Margin="0,22,0,0" BorderBrush="Black" BorderThickness="1">
@@ -54,7 +54,7 @@
                          Name="clock">
                     </TextBox>
 
-                    <TextBox Margin="15,25,15,15" Height="25" Width="170">
+                    <TextBox Name="search" KeyDown="search_KeyDown" Margin="15,25,15,15" Height="25" Width="170">
                         <TextBox.Triggers>
                             <EventTrigger RoutedEvent="GotFocus">
 

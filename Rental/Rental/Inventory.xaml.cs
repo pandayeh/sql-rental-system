@@ -21,6 +21,8 @@ namespace Rental
     /// </summary>
     public partial class Inventory : Window
     {
+        private SQLiteHelper helper;
+        private DataTable table;
         public Inventory()
         {
             InitializeComponent();
@@ -30,8 +32,8 @@ namespace Rental
                 this.clock.Text = DateTime.Now.ToString();
             }, this.Dispatcher);
 
-            SQLiteHelper helper = new SQLiteHelper();
-            DataTable table = helper.GetDataTable( //TODO: Implement volume sets
+            helper = new SQLiteHelper();
+            table = helper.GetDataTable( //TODO: Implement volume sets
                 "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
                 "FROM series, types " + 
                 "WHERE types.typeId=series.typeId");
@@ -43,6 +45,14 @@ namespace Rental
         {
             NewSeries win = new NewSeries();
             win.Show();
+        }
+
+        private void search_KeyDown(object sender, KeyEventArgs e)
+        {
+            table = helper.GetDataTable(
+                "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
+                "FROM series, types " + 
+                "WHERE types.typeId=series.typeId AND (customers.code=" + search.Text + " OR customers.name=" + search.Text + ")");
         }
     }
 }

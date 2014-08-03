@@ -77,6 +77,9 @@
     <Compile Include="Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageCustomers.xaml.cs">
+      <DependentUpon>ManageCustomers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MembershipSetup.xaml.cs">
       <DependentUpon>MembershipSetup.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageCustomers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
