@@ -23,6 +23,7 @@ namespace Rental
         private int seriesId;
         public Serials(int i)
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             seriesId = i;
             SQLiteHelper helper = new SQLiteHelper();

@@ -15,13 +15,12 @@ using System.Windows.Shapes;
 namespace Rental
 {
     /// <summary>
-    /// Interaction logic for NewItem.xaml
+    /// Interaction logic for CustomerRent.xaml
     /// </summary>
-    public partial class NewSeries : Window
+    public partial class CustomerRent : Window
     {
-        public NewSeries()
+        public CustomerRent(int id)
         {
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
     }

@@ -22,6 +22,7 @@ namespace Rental
     {
         public MembershipSetup()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             SQLiteHelper helper = new SQLiteHelper();
             DataTable table = helper.GetDataTable("SELECT types.name AS Type FROM types");

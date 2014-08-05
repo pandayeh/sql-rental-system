@@ -23,11 +23,12 @@ namespace Rental
     {
         private SQLiteHelper helper;
         private DataTable table;
+
         public Inventory()
         {
             InitializeComponent();
 
-            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate //Clock
             {
                 this.clock.Text = DateTime.Now.ToString();
             }, this.Dispatcher);
@@ -47,7 +48,7 @@ namespace Rental
             win.Show();
         }
 
-        private void search_KeyDown(object sender, KeyEventArgs e)
+        private void search_KeyDown(object sender, KeyEventArgs e) //Dynamically updating search results
         {
             table = helper.GetDataTable(
                 "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 

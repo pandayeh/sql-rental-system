@@ -1,0 +1,30 @@
+﻿<Window x:Class="Rental.EnterCustomerCodeRent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        FocusManager.FocusedElement="{Binding ElementName=code}"
+        Title="Rent" Height="100" Width="300">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Enter Customer Code</TextBlock>
+        
+        <TextBox Name="code" Grid.Row="1" HorizontalAlignment="Center" Width="200"/>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Column="0" Width="120" Height="20" Click="Name_Click">Search By Name</Button>
+            <Button Grid.Column="1" Width="60" Height="20" Click="OK_Click">OK</Button>
+            <Button Grid.Column="2" Width="60" Height="20" Click="Cancel_Click">Cancel</Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -74,6 +74,12 @@
     <Compile Include="CompanyInfoSetup.xaml.cs">
       <DependentUpon>CompanyInfoSetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomerRent.xaml.cs">
+      <DependentUpon>CustomerRent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EnterCustomerCodeRent.xaml.cs">
+      <DependentUpon>EnterCustomerCodeRent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="NewType.xaml.cs">
       <DependentUpon>NewType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SearchResults.xaml.cs">
+      <DependentUpon>SearchResults.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Serials.xaml.cs">
       <DependentUpon>Serials.xaml</DependentUpon>
     </Compile>
@@ -103,6 +112,14 @@
       <DependentUpon>TypeSetup.xaml</DependentUpon>
     </Compile>
     <Page Include="CompanyInfoSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerRent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnterCustomerCodeRent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

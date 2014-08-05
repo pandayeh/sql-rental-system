@@ -3,44 +3,45 @@
         WindowState="Maximized"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        FocusManager.FocusedElement="{Binding ElementName=search}"
+        FocusManager.FocusedElement="{Binding ElementName=searchBox}"
         Title="Cartoon" Height="1080" Width="1920">
+    
     <ScrollViewer>
         <Grid>
             <DockPanel>
                 <Menu DockPanel.Dock="Top">
                     <MenuItem Header="_Business">
-                        <MenuItem Header="Rent"/>
-                        <MenuItem Header="Return"/>
-                        <MenuItem Header="Buy"/>
-                        <MenuItem Header="In-Store"/>
+                        <MenuItem Header="Rent" Click="Rent_Click"/>
+                        <MenuItem Header="Return" Click="Return_Click"/>
+                        <MenuItem Header="Buy" Click="Buy_Click"/>
+                        <MenuItem Header="In-Store" Click="InStore_Click"/>
                         <Separator />
-                        <MenuItem Header="Switch Shifts"/>
+                        <MenuItem Header="Switch Shifts" Click="SwitchShifts_Click"/>
                         <Separator />
-                        <MenuItem Header="Exit"/>
+                        <MenuItem Header="Exit" Click="Exit_Click"/>
                     </MenuItem>
 
                     <MenuItem Header="_Data">
-                        <MenuItem Header="New Customer"/>
-                        <MenuItem Header="Manage Customers"/>
+                        <MenuItem Header="New Customer" Click="NewCustomer_Click"/>
+                        <MenuItem Header="Manage Customers" Click="ManageCustomers_Click"/>
                         <Separator />
                         <MenuItem Header="Manage Inventory" Click="ManageInventory_Click"/>
-                        <MenuItem Header="New Item"/>
-                        <MenuItem Header="Rented-Out Log"/>
+                        <MenuItem Header="New Item" Click="NewItem_Click"/>
+                        <MenuItem Header="Rented-Out Log" Click="RentedOutLog_Click"/>
                     </MenuItem>
 
                     <MenuItem Header="_Setup">
-                        <MenuItem Header="Membership Type Setup"/>
-                        <MenuItem Header="Credit Prepay Setup"/>
-                        <MenuItem Header="Inventory Type Setup"/>
-                        <MenuItem Header="Employee Setup"/>
-                        <MenuItem Header="Vendor Setup"/>
-                        <MenuItem Header="Customer ID Setup"/>
+                        <MenuItem Header="Membership Type Setup" Click="MembershipTypeSetup_Click"/>
+                        <MenuItem Header="Credit Prepay Setup" Click="CreditPrepaySetup_Click"/>
+                        <MenuItem Header="Inventory Type Setup" Click="InventoryTypeSetup_Click"/>
+                        <MenuItem Header="Employee Setup" Click="EmployeeSetup_Click"/>
+                        <MenuItem Header="Vendor Setup" Click="VendorSetup_Click"/>
+                        <MenuItem Header="Customer ID Setup" Click="CustomerIDSetup_Click"/>
                     </MenuItem>
 
                     <MenuItem Header="_Management">
-                        <MenuItem Header="Cash Register Total"/>
-                        <MenuItem Header="Transaction Log (Daily)"/>
+                        <MenuItem Header="Cash Register Total" Click="CashRegisterTotal_Click"/>
+                        <MenuItem Header="Transaction Log (Daily)" Click="TransactionLog_Click"/>
                         <MenuItem Header="Company Info" Click="CompanyInfo_Click"/>
                     </MenuItem>
                 </Menu>
@@ -66,27 +67,18 @@
                          Name="clock">
                     </TextBox>
 
-                    <TextBox Name="search" Margin="15,15,15,10" Height="25" Width="170">
-                        <TextBox.Triggers>
-                            <EventTrigger RoutedEvent="GotFocus">
+                    <TextBox Name="searchBox" Margin="15,15,15,10" Height="25" Width="170" KeyDown="Search_Enter" />
 
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="LostFocus">
-
-                            </EventTrigger>
-                        </TextBox.Triggers>
-                    </TextBox>
-
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F1) Rent</Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F2) Return</Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F3) Buy</Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F4) In-Store</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="Rent_Click">F1) Rent</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="Return_Click">F2) Return</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="Buy_Click">F3) Buy</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="InStore_Click">F4) In-Store</Button>
                     <Button Height="50" Width="200" Opacity="0"></Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F6) New Customer</Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F7) New Item</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="NewCustomer_Click">F6) New Customer</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="NewItem_Click">F7) New Item</Button>
                     <Button Height="50" Width="200" Opacity="0"></Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F9) Switch Shifts</Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200">F10) Exit</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="SwitchShifts_Click">F9) Switch Shifts</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="Exit_Click">F10) Exit</Button>
 
                 </StackPanel>
             </Border>

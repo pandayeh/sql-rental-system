@@ -21,6 +21,7 @@ namespace Rental
     {
         public Type_Setup()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 

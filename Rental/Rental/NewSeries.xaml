@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Rental.NewSeries"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        FocusManager.FocusedElement="{Binding ElementName=title}"
         Background="LightGray"
         Title="New Series" Height="200" Width="800">
     <Grid>
@@ -22,9 +23,9 @@
             <TextBlock Grid.Row="0">Title</TextBlock>
             <TextBlock Grid.Row="1">Author</TextBlock>
             <TextBlock Grid.Row="2">Publisher</TextBlock>
-            <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
-            <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
-            <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="title"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="author"></TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="publisher"></TextBox>
         </Grid>
         
         
@@ -42,8 +43,8 @@
             <TextBlock Grid.Row="0">Volumes</TextBlock>
             <TextBlock Grid.Row="1">Default Price</TextBlock>
             
-            <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
-            <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="volumes"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="defaultPrice"></TextBox>
             <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type RadioButton}">
@@ -60,7 +61,7 @@
             <ComboBox Grid.Row="0" Grid.Column="3"></ComboBox>
         </Grid>
         
-        <Button Grid.Row="2" Height="20" Width="100">Finish</Button>
+        <Button Grid.Row="2" Height="20" Width="100" IsDefault="True">Finish</Button>
 
     </Grid>
 </Window>
