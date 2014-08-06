@@ -5,7 +5,12 @@
         WindowState="Maximized"
         Title="ManageCustomers" Height="1080" Width="1920">
     <Grid>
-        <DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="40*" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Data">
                     <MenuItem Header="_New Customer"/>
@@ -27,11 +32,14 @@
             <StackPanel></StackPanel>
         </DockPanel>
         
-        <TextBlock Margin="5,23,0,0">Search</TextBlock>
-        <TextBox Name="search" KeyDown="search_KeyDown" Margin="48,22,1500,1010"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock>Search</TextBlock>
+            <TextBox Name="search" KeyUp="search_KeyUp" Width="500" Margin="2"></TextBox>
+        </StackPanel>
+        
 
-        <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                  Name="gridCustomers" ItemsSource="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="0,40,0,0">
+        <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2"
+                  Name="gridCustomers" ItemsSource="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
         </DataGrid>
     </Grid>
 </Window>

@@ -28,17 +28,19 @@ namespace Rental
 
             helper = new SQLiteHelper();
             table = helper.GetDataTable(
-                "SELECT customers.code AS Code, customers.name AS Name, customers.phone AS Phone, customers.email AS E-mail " +
-                "FROM customers");
+                "SELECT customers.*, memberships.name " +
+                "FROM customers, memberships " +
+                "WHERE memberships.membershipId=customers.membershipId");
             gridCustomers.DataContext = table.DefaultView;
         }
 
-        private void search_KeyDown(object sender, KeyEventArgs e)
+        private void search_KeyUp(object sender, KeyEventArgs e)
         {
             table = helper.GetDataTable( //TODO: select from datatable instead of database?
-                "SELECT customers.code AS Code, customers.name AS Name, customers.phone AS Phone, customers.email AS E-mail " +
-                "FROM customers " +
-                "WHERE customers.code=" + search.Text + " OR customers.name=" + search.Text);
+            "SELECT * " +
+            "FROM customers " +
+            "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
+            gridCustomers.DataContext = table.DefaultView;
         }
     }
 }
