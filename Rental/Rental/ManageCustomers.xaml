@@ -13,9 +13,9 @@
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Data">
-                    <MenuItem Header="_New Customer"/>
-                    <MenuItem Header="_Edit Customer"/>
-                    <MenuItem Header="_Delete Customer"/>
+                    <MenuItem Header="_New Customer" Click="NewCustomer_Click"/>
+                    <MenuItem Header="_Edit Customer" Click="EditCustomer_Click"/>
+                    <MenuItem Header="_Delete Customer" Click="DeleteCustomer_Click"/>
                     <Separator />
                     <MenuItem Header="_Print"/>
                     <Separator />
@@ -34,12 +34,22 @@
         
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <TextBlock>Search</TextBlock>
-            <TextBox Name="search" KeyUp="search_KeyUp" Width="500" Margin="2"></TextBox>
+            <TextBox Name="search" KeyUp="search_Enter" Width="500" Margin="2"></TextBox>
         </StackPanel>
-        
 
-        <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2"
-                  Name="gridCustomers" ItemsSource="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
+
+        <DataGrid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False" IsReadOnly="True"
+                  Name="gridCustomers" ItemsSource="{Binding}" SelectedValuePath="customerId">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code" Binding="{Binding code}" Width="1*" />
+                <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="3*" />
+                <DataGridTextColumn Header="Balance" Binding="{Binding balance}" Width="1*" />
+                <DataGridTextColumn Header="Membership" Binding="{Binding memName}" Width="2*" />
+                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="3*" />
+                <DataGridTextColumn Header="Phone" Binding="{Binding phone}" Width="2*" />
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="3*" />
+                <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="6*" />
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

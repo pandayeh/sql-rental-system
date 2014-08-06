@@ -1,0 +1,64 @@
+﻿<Window x:Class="Rental.EditCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        FocusManager.FocusedElement="{Binding ElementName=name}"
+        Title="Edit Customer" Height="150" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="12*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0">Name*</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="name"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="0">Code*</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="code"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="0">Membership*</TextBlock>
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="membershipId" Name="membership"></ComboBox>
+        <TextBlock Grid.Row="3" Grid.Column="0">Note</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="note" Grid.ColumnSpan="3"/>
+
+
+        <TextBlock Grid.Row="0" Grid.Column="2">E-mail</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="3" Name="email"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="2">Phone</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="3" Name="phone"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="2">ID</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="3" Name="id"></TextBox>
+
+
+
+        <Button Grid.Row="4" Height="20" Width="100" Grid.ColumnSpan="2" Grid.Column="0" Margin="260,0,0,4" 
+                IsDefault="True" Click="OK_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="True" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=name}" Value="">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text, ElementName=code}" Value="">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            OK
+        </Button>
+
+        <Button Grid.Row="4" Height="20" Width="100" Grid.ColumnSpan="2" Grid.Column="2" Margin="0,0,240,4" 
+                IsCancel="True" Click="Cancel_Click">
+            Cancel
+        </Button>
+
+    </Grid>
+</Window>

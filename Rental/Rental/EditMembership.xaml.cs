@@ -31,15 +31,16 @@ namespace Rental
 
             membershipId = mid;
             helper = new SQLiteHelper();
-            table = helper.GetDataTable("SELECT * FROM memberships WHERE membershipId=" + membershipId);
+
+            DataTable oldvals = helper.GetDataTable("SELECT name, deposit, discount FROM memberships WHERE membershipId=" + membershipId);
             
-            if ((double)table.Rows[0].ItemArray[3] == 0) //If no discount
+            if ((double)table.Rows[0].ItemArray[2] == 0) //If no discount
                 noDiscount.IsChecked = true;
             else discountButton.IsChecked = true;
 
-            name.Text = table.Rows[0].ItemArray[1].ToString();
-            deposit.Text = table.Rows[0].ItemArray[2].ToString();
-            discountPercent.Text = table.Rows[0].ItemArray[3].ToString();
+            name.Text = table.Rows[0].ItemArray[0].ToString();
+            deposit.Text = table.Rows[0].ItemArray[1].ToString();
+            discountPercent.Text = table.Rows[0].ItemArray[2].ToString();
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)

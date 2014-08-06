@@ -63,8 +63,9 @@ namespace Rental
                 MessageBox.Show("Error: There exist customers with this membership.");
             else
             {
-                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this membership type?","Confirm", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
+                if (MessageBox.Show(
+                    "Are you sure you want to delete membership type \"" + gridMemberships.SelectedItems[0] + "\" ?", 
+                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     helper.ExecuteNonQuery("DELETE FROM memberships WHERE membershipId=" + gridMemberships.SelectedValue);
                     table = helper.GetDataTable("SELECT * FROM memberships");

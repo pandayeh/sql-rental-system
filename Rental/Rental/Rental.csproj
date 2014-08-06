@@ -77,6 +77,9 @@
     <Compile Include="CustomerRent.xaml.cs">
       <DependentUpon>CustomerRent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditCustomer.xaml.cs">
+      <DependentUpon>EditCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditMembership.xaml.cs">
       <DependentUpon>EditMembership.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomerRent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
