@@ -12,31 +12,31 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="12*" />
             <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="12*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0">Name*</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0">ID</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="0">Phone</TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0">Note</TextBlock>
         <TextBox Grid.Row="0" Grid.Column="1" Name="name"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Name="id"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Name="phone"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="0">Code*</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="code"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="0">Membership*</TextBlock>
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="membershipId" Name="membership"></ComboBox>
+        <TextBlock Grid.Row="3" Grid.Column="0">Note</TextBlock>
         <TextBox Grid.Row="3" Grid.Column="1" Name="note" Grid.ColumnSpan="3"/>
+        
 
-        <TextBlock Grid.Row="0" Grid.Column="2">Code*</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="2">E-mail</TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="2">Membership*</TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="3" Name="code"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="3" Name="email"></TextBox>
-        <ComboBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="membershipId" Name="membership"></ComboBox>
-
-
-
-
+        <TextBlock Grid.Row="0" Grid.Column="2">E-mail</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="3" Name="email"></TextBox>
+        <TextBlock Grid.Row="2" Grid.Column="2">Phone</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="3" Name="phone"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="2">ID</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="3" Name="id"></TextBox>
+        
+        
+        
         <Button Grid.Row="4" Height="20" Width="100" Grid.ColumnSpan="2" Grid.Column="0" Margin="260,0,0,4" 
                 IsDefault="True" Click="OK_Click">
             <Button.Style>

@@ -38,31 +38,20 @@ namespace Rental
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            string sql1 = "INSERT INTO customers (name,code,membershipId";
-            string sql2 = "VALUES (" + name.Text + ", " + code.Text + ", " + membership.SelectedValue;
+            string sql = 
+                "INSERT INTO customers (name,code,membershipId,id,email,phone,note) " +
+                "VALUES (\"" + 
+                name.Text + "\", \"" + 
+                code.Text + "\", \"" + 
+                membership.SelectedValue + "\", \"" + 
+                id.Text + "\", \"" + 
+                email.Text + "\", \"" + 
+                phone.Text + "\", \"" + 
+                note.Text + "\")";
 
-            if (id.Text != "")
-            {
-                sql1 += ", id";
-                sql2 += ", " + id.Text;
-            }
-            if (email.Text != "")
-            {
-                sql1 += ", email";
-                sql2 += ", " + email.Text;
-            }
-            if (phone.Text != "")
-            {
-                sql1 += ", phone";
-                sql2 += ", " + phone.Text;
-            }
-            if (note.Text != "")
-            {
-                sql1 += ", note";
-                sql2 += ", " + note.Text;
-            }
+            helper.ExecuteNonQuery(sql);
 
-            helper.ExecuteNonQuery(sql1 + ") " + sql2 + ")");
+            Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
