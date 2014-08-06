@@ -18,7 +18,7 @@
             <ColumnDefinition Width="12*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0">Name*</TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0">ID</TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="0">Phone</TextBlock>
         <TextBlock Grid.Row="3" Grid.Column="0">Note</TextBlock>
@@ -27,17 +27,38 @@
         <TextBox Grid.Row="2" Grid.Column="1" Name="phone"></TextBox>
         <TextBox Grid.Row="3" Grid.Column="1" Name="note" Grid.ColumnSpan="3"/>
 
-        <TextBlock Grid.Row="0" Grid.Column="2">Code</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2">Code*</TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="2">E-mail</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="2">Membership</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2">Membership*</TextBlock>
         <TextBox Grid.Row="0" Grid.Column="3" Name="code"></TextBox>
         <TextBox Grid.Row="1" Grid.Column="3" Name="email"></TextBox>
-        <ComboBox Grid.Row="2" Grid.Column="3" Name="membership"></ComboBox>
+        <ComboBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding}" Name="membership"></ComboBox>
 
 
 
 
-        <Button Grid.Row="4" Height="20" Width="100" Grid.ColumnSpan="2" Grid.Column="1" Margin="266,4,30,0" IsDefault="True" Click="Finish_Click">Finish</Button>
+        <Button Grid.Row="4" Height="20" Width="100" Grid.ColumnSpan="2" Grid.Column="0" Margin="260,0,0,4" 
+                IsDefault="True" Click="OK_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="True" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=name}" Value="">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text, ElementName=code}" Value="">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            OK
+        </Button>
+        
+        <Button Grid.Row="4" Height="20" Width="100" Grid.ColumnSpan="2" Grid.Column="2" Margin="0,0,240,4" 
+                IsCancel="True" Click="Cancel_Click">
+            Cancel
+        </Button>
 
     </Grid>
 </Window>

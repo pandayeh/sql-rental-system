@@ -9,8 +9,11 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Column="0">
-            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False"
                   Name="gridMemberships" ItemsSource="{Binding}" Height="181">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="1*" />
+                </DataGrid.Columns>
             </DataGrid>
             
             <TextBlock>

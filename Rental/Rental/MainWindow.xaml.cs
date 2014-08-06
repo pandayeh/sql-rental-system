@@ -22,7 +22,7 @@ namespace Rental
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static SQLiteHelper helper = new SQLiteHelper();
+        private SQLiteHelper helper;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Rental
                 this.clock.Text = DateTime.Now.ToString();
             }, this.Dispatcher);
 
-            
+            helper = new SQLiteHelper();
             companyname.DataContext = helper.ExecuteScalar("SELECT name FROM companyinfo");
             
 
@@ -148,7 +148,7 @@ namespace Rental
 
         private void MembershipTypeSetup_Click(object sender, RoutedEventArgs e)
         {
-            Inventory win = new Inventory();
+            MembershipSetup win = new MembershipSetup();
             win.ShowDialog();
         }
 

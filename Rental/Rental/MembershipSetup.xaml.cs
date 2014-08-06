@@ -20,18 +20,24 @@ namespace Rental
     /// </summary>
     public partial class MembershipSetup : Window
     {
+        private SQLiteHelper helper;
+        private DataTable table;
+
         public MembershipSetup()
         {
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            SQLiteHelper helper = new SQLiteHelper();
-            DataTable table = helper.GetDataTable("SELECT types.name AS Type FROM types");
+            
+            helper = new SQLiteHelper();
+            table = helper.GetDataTable("SELECT * FROM memberships");
             gridMemberships.DataContext = table.DefaultView;
         }
 
         private void New_Click(object sender, RoutedEventArgs e)
         {
-
+            NewMembership win = new NewMembership();
+            win.ShowDialog();
+            table = helper.GetDataTable("SELECT * FROM memberships");
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
