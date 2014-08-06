@@ -116,13 +116,13 @@ namespace Rental
 
         private void NewCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Inventory win = new Inventory();
+            NewCustomer win = new NewCustomer();
             win.ShowDialog();
         }
 
         private void ManageCustomers_Click(object sender, RoutedEventArgs e)
         {
-            Inventory win = new Inventory();
+            ManageCustomers win = new ManageCustomers();
             win.ShowDialog();
         }
 

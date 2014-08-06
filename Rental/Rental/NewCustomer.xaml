@@ -32,7 +32,7 @@
         <TextBlock Grid.Row="3" Grid.Column="2">Membership*</TextBlock>
         <TextBox Grid.Row="0" Grid.Column="3" Name="code"></TextBox>
         <TextBox Grid.Row="1" Grid.Column="3" Name="email"></TextBox>
-        <ComboBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding}" Name="membership"></ComboBox>
+        <ComboBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="membershipId" Name="membership"></ComboBox>
 
 
 

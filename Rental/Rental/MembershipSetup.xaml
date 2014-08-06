@@ -9,20 +9,15 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Column="0">
-            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False"
-                  Name="gridMemberships" ItemsSource="{Binding}" Height="181">
+            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="181" AutoGenerateColumns="False" IsReadOnly="True"
+                  Name="gridMemberships" ItemsSource="{Binding}" SelectionChanged="Select_Type" SelectedValuePath="membershipId">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="1*" />
                 </DataGrid.Columns>
             </DataGrid>
-            
-            <TextBlock>
-                Deposit:
-            </TextBlock>
-            
-            <TextBlock>
-                Discount:
-            </TextBlock>
+
+            <TextBlock Name="deposit" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Name="discount" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel Grid.Column="1">

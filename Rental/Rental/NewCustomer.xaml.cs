@@ -31,15 +31,15 @@ namespace Rental
             helper = new SQLiteHelper();
 
             table = helper.GetDataTable( //TODO: Implement volume sets
-                "SELECT memberships.name " +
-                "FROM memberships)");
-            membership.DataContext = table.DefaultView;
+                "SELECT memberships.membershipId, memberships.name " +
+                "FROM memberships");
+            membership.DataContext = table;
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             string sql1 = "INSERT INTO customers (name,code,membershipId";
-            string sql2 = "VALUES (" + name.Text + ", " + code.Text + ", " + membership.SelectedIndex;
+            string sql2 = "VALUES (" + name.Text + ", " + code.Text + ", " + membership.SelectedValue;
 
             if (id.Text != "")
             {

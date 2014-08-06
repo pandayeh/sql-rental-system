@@ -1,8 +1,8 @@
-﻿<Window x:Class="Rental.NewMembership"
+﻿<Window x:Class="Rental.EditMembership"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         FocusManager.FocusedElement="{Binding ElementName=name}"
-        Title="NewMembership" Height="125" Width="500">
+        Title="Edit Membership" Height="125" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -12,22 +12,22 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
-        
+
         <TextBlock Grid.Row="0" Grid.Column="0">Name:</TextBlock>
         <TextBox Name="name" Grid.Row="0" Grid.Column="0" Margin="38,0,0,0"></TextBox>
         <TextBlock Grid.Row="0" Grid.Column="1">Deposit:</TextBlock>
-        <TextBox Name="deposit" Grid.Row="0" Grid.Column="1" Margin="50,0,0,0">0</TextBox>
-        
+        <TextBox Name="deposit" Grid.Row="0" Grid.Column="1" Margin="50,0,0,0"></TextBox>
+
         <GroupBox Header="Discount" Grid.Row="1" Grid.Column="0">
             <StackPanel>
-                <RadioButton GroupName="discount" IsChecked="True">No Discount</RadioButton>
+                <RadioButton GroupName="discount" Name="noDiscount">No Discount</RadioButton>
                 <StackPanel Orientation="Horizontal">
                     <RadioButton GroupName="discount" Name="discountButton">% Discount</RadioButton>
                     <TextBox Name="discountPercent" Width="50" Margin="5,0,0,0"></TextBox>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        
+
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -47,7 +47,7 @@
                 </Button.Style>
                 OK
             </Button>
-            
+
             <Button Click="Cancel_Click" Grid.Column="1" Height="25" Width="80" IsCancel="True">Cancel</Button>
         </Grid>
     </Grid>
