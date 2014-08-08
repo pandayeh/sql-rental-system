@@ -19,14 +19,14 @@
                     <Separator />
                     <MenuItem Header="_Print"/>
                     <Separator />
-                    <MenuItem Header="_Exit"/>
+                    <MenuItem Header="_Exit" Click="Finish_Click"/>
                 </MenuItem>
 
                 <MenuItem Header="_Logs">
-                    <MenuItem Header="Customers With Credit"/>
-                    <MenuItem Header="Customers With Debit"/>
-                    <MenuItem Header="Customers With Deposit (Cash)"/>
-                    <MenuItem Header="Customers With Deposit (Other)"/>
+                    <MenuItem Header="Customers With Credit" Click="Credit_Click"/>
+                    <MenuItem Header="Customers With Debit" Click="Debit_Click"/>
+                    <MenuItem Header="Customers With Deposit (Cash)" Click="DepositCash_Click"/>
+                    <MenuItem Header="Customers With Deposit (Other)" Click="DepositOther_Click"/>
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>

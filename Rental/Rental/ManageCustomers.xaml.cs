@@ -53,8 +53,11 @@ namespace Rental
         {
             NewCustomer win = new NewCustomer();
             win.ShowDialog();
-            
-
+            table = helper.GetDataTable(
+                    "SELECT * " +
+                    "FROM customers " +
+                    "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
+            gridCustomers.DataContext = table.DefaultView;
         }
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
@@ -76,7 +79,7 @@ namespace Rental
             else
             {
                if(MessageBox.Show(
-                   "Are you sure you want to delete customer \"" + gridCustomers.SelectedItems[1] + "\"?", 
+                   "Are you sure you want to delete customer \"" + ((DataRowView)gridCustomers.SelectedItems[0])["name"] + "\"?", 
                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                {
                    helper.ExecuteNonQuery("DELETE FROM customers WHERE customerId=" + gridCustomers.SelectedValue);
@@ -104,22 +107,22 @@ namespace Rental
 
         private void Credit_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
         }
 
         private void Debit_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
         }
 
         private void DepositCash_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
         }
 
         private void DepositOther_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+           
         }
     }
 }

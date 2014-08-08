@@ -50,14 +50,14 @@ namespace Rental
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             string sql = 
-                "UPDATE customers (name,code,membershipId,id,email,phone,note) " +
+                "UPDATE customers " +
                 "SET "+
-                "name=\"" + name.Text + "\", \"" +
-                "code=\"" + code.Text + "\", \"" +
-                "membership=\"" + membership.SelectedValue + "\", \"" +
-                "id=\"" + id.Text + "\", \"" +
-                "email=\"" + email.Text + "\", \"" +
-                "phone=\"" + phone.Text + "\", \"" +
+                "name=\"" + name.Text + "\", " +
+                "code=\"" + code.Text + "\", " +
+                "membershipId=\"" + membership.SelectedValue + "\", " +
+                "id=\"" + id.Text + "\", " +
+                "email=\"" + email.Text + "\", " +
+                "phone=\"" + phone.Text + "\", " +
                 "note=\"" + note.Text + "\" " +
                 "WHERE customerId=" + customerId;
 
