@@ -60,9 +60,9 @@ namespace Rental
             DataTable rented = helper.GetDataTable( //Check if anything with this type is rented out
                 "SELECT rented.* " + 
                 "FROM rented " + 
-                "JOIN serials USING serialId " + 
-                "JOIN series USING seriesId " + 
-                "WHERE series.typeId=" + (int)gridTypes.SelectedValue);
+                "JOIN serials USING (serialId) " + 
+                "JOIN series USING (seriesId) " + 
+                "WHERE series.typeId=" + Convert.ToInt32(gridTypes.SelectedValue));
 
             if (rented.Rows.Count != 0)
                 MessageBox.Show("Error: There exist items of this type with active rentals.");
@@ -80,11 +80,6 @@ namespace Rental
                 }
 
             }
-
-            table = helper.GetDataTable(
-                "SELECT typeId, name " +
-                "FROM types");
-            gridTypes.DataContext = table.DefaultView;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
