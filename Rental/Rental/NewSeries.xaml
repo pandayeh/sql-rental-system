@@ -20,7 +20,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0">Title</TextBlock>
+            <TextBlock Grid.Row="0">Title*</TextBlock>
             <TextBlock Grid.Row="1">Author</TextBlock>
             <TextBlock Grid.Row="2">Publisher</TextBlock>
             <TextBox Grid.Row="0" Grid.Column="1" Name="title"></TextBox>
@@ -40,28 +40,54 @@
                 <ColumnDefinition Width="10*" />
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0">Volumes</TextBlock>
-            <TextBlock Grid.Row="1">Default Price</TextBlock>
             
-            <TextBox Grid.Row="0" Grid.Column="1" Name="volumes"></TextBox>
+            <TextBlock Grid.Row="0">Reference</TextBlock>
+            <TextBlock Grid.Row="1">Default Price</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="reference"></TextBox>
             <TextBox Grid.Row="1" Grid.Column="1" Name="defaultPrice"></TextBox>
+            
             <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type RadioButton}">
                         <Setter Property="Margin" Value="0,0,30,0"/>
                     </Style>
                 </StackPanel.Resources>
-                <RadioButton GroupName="Status" Content="Finished" IsChecked="True"/>
-                <RadioButton GroupName="Status" Content="On-Going"/>
+                <RadioButton Name="finished" GroupName="Status" Content="Finished" IsChecked="True"/>
+                <RadioButton Name="ongoing" GroupName="Status" Content="On-Going"/>
             </StackPanel>
             
-            <TextBlock Grid.Row="0" Grid.Column="2">Type</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="2">Status</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="2">Type*</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="2">Status*</TextBlock>
 
-            <ComboBox Grid.Row="0" Grid.Column="3"></ComboBox>
+            <ComboBox Grid.Row="0" Grid.Column="3" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="typeId" Name="type" />
         </Grid>
         
-        <Button Grid.Row="2" Height="20" Width="100" IsDefault="True">Finish</Button>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Height="20" Width="100" IsDefault="True" Click="OK_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=title}" Value="">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding SelectedIndex, ElementName=type}" Value="-1">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                OK
+            </Button>
+            <Button Grid.Column="2" Height="20" Width="100" IsCancel="True" Click="Cancel_Click">Cancel</Button>
+        </Grid>
+        
 
     </Grid>
 </Window>

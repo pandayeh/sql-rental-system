@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,43 @@ namespace Rental
     /// </summary>
     public partial class NewSeries : Window
     {
+        private SQLiteHelper helper;
+        private DataTable table;
+
         public NewSeries()
         {
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
+
+            helper = new SQLiteHelper();
+
+            table = helper.GetDataTable( //TODO: Implement volume sets
+                "SELECT typeId, name " +
+                "FROM types");
+            type.DataContext = table;
+        }
+
+        private void OK_Click(object sender, RoutedEventArgs e)
+        {
+            string sql =
+                "INSERT INTO customers (title,typeId,author,publisher,reference,defaultPrice,finished) " +
+                "VALUES (\"" +
+                title.Text + "\", \"" +
+                type.SelectedValue + "\", \"" +
+                author.Text + "\", \"" +
+                publisher.Text + "\", \"" +
+                reference.Text + "\", \"" +
+                defaultPrice.Text + "\", \"" +
+                ( ((bool)finished.IsChecked) ? "TRUE" : "FALSE" ) + "\")";
+
+            helper.ExecuteNonQuery(sql);
+
+            Close();
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

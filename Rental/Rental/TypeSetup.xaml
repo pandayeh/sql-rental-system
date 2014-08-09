@@ -1,7 +1,7 @@
-﻿<Window x:Class="Rental.Type_Setup"
+﻿<Window x:Class="Rental.TypeSetup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Type_Setup" Height="300" Width="600">
+        Title="Type Setup" Height="300" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
@@ -13,9 +13,14 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.Column="0"
-                  Name="gridTypes" ItemsSource="{Binding}">
+        
+        <DataGrid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False" IsReadOnly="True"
+                  Name="gridTypes" ItemsSource="{Binding}" SelectedValuePath="typeId">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Type" Binding="{Binding name}" Width="1*" />
+            </DataGrid.Columns>
         </DataGrid>
+        
         <TextBlock Grid.Row="0" Grid.Column="1"
                    Name="textRate" >
             

@@ -22,6 +22,7 @@ namespace Rental
     {
         private DataTable table;
         private SQLiteHelper helper;
+
         public ManageCustomers()
         {
             InitializeComponent();

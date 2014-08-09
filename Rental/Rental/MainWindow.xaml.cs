@@ -126,13 +126,13 @@ namespace Rental
             win.ShowDialog();
         }
 
-        private void ManageInventory_Click(object sender, RoutedEventArgs e)
+        private void NewSeries_Click(object sender, RoutedEventArgs e)
         {
-            Inventory win = new Inventory();
+            NewSeries win = new NewSeries();
             win.ShowDialog();
         }
 
-        private void NewItem_Click(object sender, RoutedEventArgs e)
+        private void ManageInventory_Click(object sender, RoutedEventArgs e)
         {
             Inventory win = new Inventory();
             win.ShowDialog();
@@ -160,7 +160,7 @@ namespace Rental
 
         private void InventoryTypeSetup_Click(object sender, RoutedEventArgs e)
         {
-            Inventory win = new Inventory();
+            TypeSetup win = new TypeSetup();
             win.ShowDialog();
         }
 

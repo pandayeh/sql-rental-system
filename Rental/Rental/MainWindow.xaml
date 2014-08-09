@@ -25,8 +25,8 @@
                         <MenuItem Header="New Customer" Click="NewCustomer_Click"/>
                         <MenuItem Header="Manage Customers" Click="ManageCustomers_Click"/>
                         <Separator />
+                        <MenuItem Header="New Series" Click="NewSeries_Click"/>
                         <MenuItem Header="Manage Inventory" Click="ManageInventory_Click"/>
-                        <MenuItem Header="New Item" Click="NewItem_Click"/>
                         <MenuItem Header="Rented-Out Log" Click="RentedOutLog_Click"/>
                     </MenuItem>
 
@@ -75,7 +75,7 @@
                     <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="InStore_Click">F4) In-Store</Button>
                     <Button Height="50" Width="200" Opacity="0"></Button>
                     <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="NewCustomer_Click">F6) New Customer</Button>
-                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="NewItem_Click">F7) New Item</Button>
+                    <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="NewSeries_Click">F7) New Item</Button>
                     <Button Height="50" Width="200" Opacity="0"></Button>
                     <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="SwitchShifts_Click">F9) Switch Shifts</Button>
                     <Button HorizontalContentAlignment="Left" Height="50" Width="200" Click="Exit_Click">F10) Exit</Button>

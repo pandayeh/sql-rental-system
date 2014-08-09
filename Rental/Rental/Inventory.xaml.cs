@@ -35,7 +35,7 @@ namespace Rental
 
             helper = new SQLiteHelper();
             table = helper.GetDataTable( //TODO: Implement volume sets
-                "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
+                "SELECT types.name AS Type, series.title AS Title, series.finished AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
                 "FROM series, types " + 
                 "WHERE types.typeId=series.typeId");
             gridInv.DataContext = table.DefaultView;
@@ -48,12 +48,13 @@ namespace Rental
             win.Show();
         }
 
-        private void search_KeyDown(object sender, KeyEventArgs e) //Dynamically updating search results
+        private void search_KeyDown(object sender, KeyEventArgs e)
         {
-            table = helper.GetDataTable(
-                "SELECT types.name AS Type, series.title AS Title, series.ongoing AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
-                "FROM series, types " + 
-                "WHERE types.typeId=series.typeId AND (customers.code=" + search.Text + " OR customers.name=" + search.Text + ")");
+            if(e.Key == Key.Return)
+                table = helper.GetDataTable(
+                    "SELECT types.name AS Type, series.title AS Title, series.finished AS 疵, series.artist AS Author, series.publisher AS Publisher, series.reference AS Reference " + 
+                    "FROM series, types " + 
+                    "WHERE types.typeId=series.typeId AND (customers.code=" + search.Text + " OR customers.name=" + search.Text + ")");
         }
     }
 }
