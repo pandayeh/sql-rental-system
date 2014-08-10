@@ -53,25 +53,29 @@ namespace Rental
                 table = helper.GetDataTable("SELECT * FROM memberships");
                 gridMemberships.DataContext = table.DefaultView;
             }
-            catch (Exception oops) { }
+            catch (Exception oops) { Console.WriteLine(oops.Message); }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            DataTable children = helper.GetDataTable("SELECT * FROM customers WHERE membershipId=" + Convert.ToInt32(gridMemberships.SelectedValue));
-            if(children.Rows.Count != 0)
-                MessageBox.Show("Error: There exist customers with this membership.");
-            else
-            {
-                if (MessageBox.Show(
-                    "Are you sure you want to delete membership type \"" + gridMemberships.SelectedItems[0] + "\" ?", 
-                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            try {
+                DataTable children = helper.GetDataTable("SELECT * FROM customers WHERE membershipId=" + Convert.ToInt32(gridMemberships.SelectedValue));
+                if (children.Rows.Count != 0)
+                    MessageBox.Show("Error: There exist customers with this membership.");
+                else
                 {
-                    helper.ExecuteNonQuery("DELETE FROM memberships WHERE membershipId=" + gridMemberships.SelectedValue);
-                    table = helper.GetDataTable("SELECT * FROM memberships");
-                    gridMemberships.DataContext = table.DefaultView;
+                    if (MessageBox.Show(
+                        "Are you sure you want to delete membership type \"" + gridMemberships.SelectedItems[0] + "\" ?",
+                        "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        helper.ExecuteNonQuery("DELETE FROM memberships WHERE membershipId=" + gridMemberships.SelectedValue);
+                        table = helper.GetDataTable("SELECT * FROM memberships");
+                        gridMemberships.DataContext = table.DefaultView;
+                    }
                 }
             }
+            
+            catch (Exception oops) { Console.WriteLine(oops.Message); }
         }
 
         private void Finish_Click(object sender, RoutedEventArgs e)
@@ -86,7 +90,7 @@ namespace Rental
                 deposit.DataContext = "Deposit: " + table.Rows[gridMemberships.SelectedIndex].ItemArray[2];
                 discount.DataContext = "Discount: " + table.Rows[gridMemberships.SelectedIndex].ItemArray[3];
             }
-            catch(Exception oops) {} //New Membership selects new row before table can update, causing this exception
+            catch (Exception oops) { Console.WriteLine(oops.Message); } //New Membership selects new row before table can update, causing this exception
         }
 
     }

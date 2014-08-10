@@ -44,28 +44,28 @@ namespace Rental
                 "VALUES (\"" +
                 name.Text + "\", \"";
 
-            string sql2 = 
-                rentMultiplier.IsChecked + "\", \"" +
+            string sql2 =
+                (((bool)rentMultiplier.IsChecked) ? 1 : 0) + "\", \"" +
                 (((bool)rentMultiplier.IsChecked) ? rentMulti.Text : rentFlat.Text) + "\", \"" +
                 rentQuantity.Text + "\", \"" +
                 rentDays.Text + "\", \"" +
 
-                hotMultiplier.IsChecked + "\", \"" +
+                (((bool)hotMultiplier.IsChecked) ? 1 : 0) + "\", \"" +
                 (((bool)hotMultiplier.IsChecked) ? hotMulti.Text : hotFlat.Text) + "\", \"" +
                 hotQuantity.Text + "\", \"" +
                 hotDays.Text + "\", \"" +
                 hotLength.Text + "\", \"" +
 
-                houseMultiplier.IsChecked + "\", \"" +
+                (((bool)houseMultiplier.IsChecked) ? 1 : 0) + "\", \"" +
                 (((bool)houseMultiplier.IsChecked) ? houseMulti.Text : houseFlat.Text) + "\", \"" +
 
-                depositMultiplier.IsChecked + "\", \"" +
+                (((bool)depositMultiplier.IsChecked) ? 1 : 0) + "\", \"" +
                 (((bool)depositMultiplier.IsChecked) ? depositMulti.Text : depositFlat.Text) + "\", \"" +
 
-                membershipMultiplier.IsChecked + "\", \"" +
+                (((bool)membershipMultiplier.IsChecked) ? 1 : 0) + "\", \"" +
                 (((bool)membershipMultiplier.IsChecked) ? membershipMulti.Text : membershipFlat.Text) + "\", \"" +
 
-                overdueMultiplier.IsChecked + "\", \"" +
+                (((bool)overdueMultiplier.IsChecked) ? 1 : 0) + "\", \"" +
                 (((bool)overdueMultiplier.IsChecked) ? overdueMulti.Text : overdueFlat.Text) + "\", \"" +
                 overdueDays.Text + "\")";
 
@@ -97,11 +97,6 @@ namespace Rental
                 helper.ExecuteNonQuery(sql1 + sql2);
                 Close();
             }
-            
-            
-
-            
-
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

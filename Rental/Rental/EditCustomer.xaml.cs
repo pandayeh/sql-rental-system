@@ -38,13 +38,14 @@ namespace Rental
             membership.DataContext = table;
 
             DataTable oldVals = helper.GetDataTable("SELECT name, code, email, id, phone, note, membershipId FROM customers WHERE customerId=" + customerId);
-            name.Text = oldVals.Rows[0].ItemArray[0].ToString();
-            code.Text = oldVals.Rows[0].ItemArray[1].ToString();
-            email.Text = oldVals.Rows[0].ItemArray[2].ToString();
-            id.Text = oldVals.Rows[0].ItemArray[3].ToString();
-            phone.Text = oldVals.Rows[0].ItemArray[4].ToString();
-            note.Text = oldVals.Rows[0].ItemArray[5].ToString();
-            membership.SelectedIndex = Convert.ToInt32(oldVals.Rows[0].ItemArray[6]);
+            object[] items = oldVals.Rows[0].ItemArray;
+            name.Text = items[0].ToString();
+            code.Text = items[1].ToString();
+            email.Text = items[2].ToString();
+            id.Text = items[3].ToString();
+            phone.Text = items[4].ToString();
+            note.Text = items[5].ToString();
+            membership.SelectedIndex = Convert.ToInt32(items[6]);
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)

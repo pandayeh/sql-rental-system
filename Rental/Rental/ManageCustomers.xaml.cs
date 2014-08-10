@@ -63,35 +63,41 @@ namespace Rental
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
         {
-            EditCustomer win = new EditCustomer(Convert.ToInt32(gridCustomers.SelectedValue));
-            win.ShowDialog();
-            table = helper.GetDataTable(
-                    "SELECT * " +
-                    "FROM customers " +
-                    "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
-            gridCustomers.DataContext = table.DefaultView;
+            try {
+                EditCustomer win = new EditCustomer(Convert.ToInt32(gridCustomers.SelectedValue));
+                win.ShowDialog();
+                table = helper.GetDataTable(
+                        "SELECT * " +
+                        "FROM customers " +
+                        "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
+                gridCustomers.DataContext = table.DefaultView;
+            }
+            
+            catch (Exception oops) { Console.WriteLine(oops.Message); }
         }
 
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
-            DataTable rented = helper.GetDataTable("SELECT rented.* FROM rented, customers WHERE rented.customerId=" + Convert.ToInt32(gridCustomers.SelectedValue));
-            if(rented.Rows.Count != 0)
-                MessageBox.Show("Error: Customer has active rentals.");
-            else
-            {
-               if(MessageBox.Show(
-                   "Are you sure you want to delete customer \"" + ((DataRowView)gridCustomers.SelectedItems[0])["name"] + "\"?", 
-                   "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-               {
-                   helper.ExecuteNonQuery("DELETE FROM customers WHERE customerId=" + gridCustomers.SelectedValue);
-                   table = helper.GetDataTable(
-                        "SELECT customers.*, memberships.name AS memName " +
-                        "FROM customers, memberships " +
-                        "WHERE memberships.membershipId=customers.membershipId");
-                   gridCustomers.DataContext = table.DefaultView;
-               }
-                   
+            try {
+                DataTable rented = helper.GetDataTable("SELECT rented.* FROM rented, customers WHERE rented.customerId=" + Convert.ToInt32(gridCustomers.SelectedValue));
+                if (rented.Rows.Count != 0)
+                    MessageBox.Show("Error: Customer has active rentals.");
+                else
+                {
+                    if (MessageBox.Show(
+                        "Are you sure you want to delete customer \"" + ((DataRowView)gridCustomers.SelectedItems[0])["name"] + "\"?",
+                        "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        helper.ExecuteNonQuery("DELETE FROM customers WHERE customerId=" + gridCustomers.SelectedValue);
+                        table = helper.GetDataTable(
+                             "SELECT customers.*, memberships.name AS memName " +
+                             "FROM customers, memberships " +
+                             "WHERE memberships.membershipId=customers.membershipId");
+                        gridCustomers.DataContext = table.DefaultView;
+                    }
+                }
             }
+            catch (Exception oops) { Console.WriteLine(oops.Message); }
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
