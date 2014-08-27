@@ -21,7 +21,6 @@ namespace Rental
     public partial class EditMembership : Window
     {
         private SQLiteHelper helper;
-        private DataTable table;
         private int membershipId;
 
         public EditMembership(int mid)
@@ -34,13 +33,13 @@ namespace Rental
 
             DataTable oldvals = helper.GetDataTable("SELECT name, deposit, discount FROM memberships WHERE membershipId=" + membershipId);
             
-            if ((double)table.Rows[0].ItemArray[2] == 0) //If no discount
+            if ((double)oldvals.Rows[0].ItemArray[2] == 0) //If no discount
                 noDiscount.IsChecked = true;
             else discountButton.IsChecked = true;
 
-            name.Text = table.Rows[0].ItemArray[0].ToString();
-            deposit.Text = table.Rows[0].ItemArray[1].ToString();
-            discountPercent.Text = table.Rows[0].ItemArray[2].ToString();
+            name.Text = oldvals.Rows[0].ItemArray[0].ToString();
+            deposit.Text = oldvals.Rows[0].ItemArray[1].ToString();
+            discountPercent.Text = oldvals.Rows[0].ItemArray[2].ToString();
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
