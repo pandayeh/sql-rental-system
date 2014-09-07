@@ -57,33 +57,29 @@ namespace Rental
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            try
+            DataTable rented = helper.GetDataTable( //Check if anything with this type is rented out
+            "SELECT rented.* " +
+            "FROM rented " +
+            "JOIN serials USING (serialId) " +
+            "JOIN series USING (seriesId) " +
+            "WHERE series.typeId=" + Convert.ToInt32(gridTypes.SelectedValue));
+
+            if (rented.Rows.Count != 0)
+                MessageBox.Show("Error: There exist items of this type with active rentals.");
+            else
             {
-                DataTable rented = helper.GetDataTable( //Check if anything with this type is rented out
-                "SELECT rented.* " +
-                "FROM rented " +
-                "JOIN serials USING (serialId) " +
-                "JOIN series USING (seriesId) " +
-                "WHERE series.typeId=" + Convert.ToInt32(gridTypes.SelectedValue));
-
-                if (rented.Rows.Count != 0)
-                    MessageBox.Show("Error: There exist items of this type with active rentals.");
-                else
+                if (MessageBox.Show(
+                    "Are you sure you want to delete type \"" + ((DataRowView)gridTypes.SelectedItems[0])["name"] + "\"?\nAll items of this type will be deleted!",
+                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    if (MessageBox.Show(
-                        "Are you sure you want to delete type \"" + ((DataRowView)gridTypes.SelectedItems[0])["name"] + "\"?\nAll items of this type will be deleted!",
-                        "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
-                        helper.ExecuteNonQuery("DELETE FROM types WHERE typeId=" + gridTypes.SelectedValue);
-                        table = helper.GetDataTable(
-                            "SELECT typeId, name " +
-                            "FROM types");
-                        gridTypes.DataContext = table.DefaultView;
-                    }
-
+                    helper.ExecuteNonQuery("DELETE FROM types WHERE typeId=" + gridTypes.SelectedValue);
+                    table = helper.GetDataTable(
+                        "SELECT typeId, name " +
+                        "FROM types");
+                    gridTypes.DataContext = table.DefaultView;
                 }
+
             }
-            catch (IndexOutOfRangeException oops) { Console.WriteLine(oops.Message); } //Delete Type selects new row before table can update, causing this exception
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
