@@ -90,7 +90,7 @@ namespace Rental
                 deposit.DataContext = "Deposit: " + table.Rows[gridMemberships.SelectedIndex].ItemArray[2];
                 discount.DataContext = "Discount: " + table.Rows[gridMemberships.SelectedIndex].ItemArray[3];
             }
-            catch (Exception oops) { Console.WriteLine(oops.Message); } //New Membership selects new row before table can update, causing this exception
+            catch (IndexOutOfRangeException oops) { Console.WriteLine(oops.Message); } //New Membership selects new row before table can update, causing this exception
         }
 
     }

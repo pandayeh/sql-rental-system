@@ -83,12 +83,31 @@ namespace Rental
 
                 }
             }
-            catch (Exception oops) { Console.WriteLine(oops.Message); }
+            catch (IndexOutOfRangeException oops) { Console.WriteLine(oops.Message); } //Delete Type selects new row before table can update, causing this exception
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Select_Type(object sender, RoutedEventArgs e)
+        {
+            //try
+            {
+                DataTable vals = helper.GetDataTable(
+                    "SELECT rentMultiplier,rentValue,hotMultiplier,hotValue,houseMultiplier,houseValue,depositMultiplier,depositValue,membershipMultiplier,membershipValue,overdueMultiplier,overdueValue" +
+                    "FROM types WHERE typeId=" + gridTypes.SelectedValue);
+                object[] items = vals.Rows[0].ItemArray;
+
+                rentRate.DataContext = "Regular Rate: " + (((bool)items[0]) ? "x" : "+") + items[1].ToString();
+                rentRate.DataContext = "Hot Rate: " + (((bool)items[2]) ? "x" : "+") + items[3].ToString();
+                rentRate.DataContext = "In-Store Rate: " + (((bool)items[4]) ? "x" : "+") + items[5].ToString();
+                rentRate.DataContext = "Deposit Rate: " + (((bool)items[6]) ? "x" : "+") + items[7].ToString();
+                rentRate.DataContext = "Membership Rate: " + (((bool)items[8]) ? "x" : "+") + items[9].ToString();
+                rentRate.DataContext = "Overdue Rate: " + (((bool)items[10]) ? "x" : "+") + items[11].ToString();
+            }
+            //catch (IndexOutOfRangeException oops) { Console.WriteLine(oops.Message); } //New Type selects new row before table can update, causing this exception
         }
     }
 }

@@ -1,53 +1,44 @@
 ﻿<Window x:Class="Rental.TypeSetup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Type Setup" Height="300" Width="600">
+        Title="Type Setup" Height="300" Width="550">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         
-        <DataGrid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False" IsReadOnly="True"
-                  Name="gridTypes" ItemsSource="{Binding}" SelectedValuePath="typeId">
+        <DataGrid Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False" IsReadOnly="True"
+                  Name="gridTypes" ItemsSource="{Binding}" SelectedValuePath="typeId" SelectionChanged="Select_Type">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" Binding="{Binding name}" Width="1*" />
             </DataGrid.Columns>
         </DataGrid>
         
-        <TextBlock Grid.Row="0" Grid.Column="1"
-                   Name="textRate" >
+        <GroupBox Header="Default Rates" Grid.Row="0" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Name="rentRate" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Name="hotRate" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Name="houseRate" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Name="depositRate" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Name="membershipRate" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Name="overdueRate" Text="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0,25,0,0"/>
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Height" Value="35" />
+                </Style>
+            </StackPanel.Resources>
             
-        </TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="2"
-                   Name="textMember" >
-
-        </TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="3"
-                   Name="textHot" >
-
-        </TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Height="35" Width="100"
-                Click="New_Click">
-            New Type
-        </Button>
-        <Button Grid.Row="1" Grid.Column="1" Height="35" Width="100"
-                Click="Edit_Click">
-            Edit Type
-        </Button>
-        <Button Grid.Row="1" Grid.Column="2" Height="35" Width="100"
-                Click="Delete_Click">
-            Delete Type
-        </Button>
-        <Button Grid.Row="1" Grid.Column="3" Height="35" Width="100"
-                Click="Close_Click">
-            Close
-        </Button>
+            <Button Click="New_Click"> New Type </Button>
+            <Button Click="Edit_Click"> Edit Type </Button>
+            <Button Click="Delete_Click"> Delete Type </Button>
+            <Button Click="Close_Click"> Close </Button>
+        </StackPanel>
     </Grid>
 </Window>
