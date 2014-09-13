@@ -47,39 +47,47 @@ namespace Rental
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            EditType win = new EditType(Convert.ToInt32(gridTypes.SelectedValue));
-            win.ShowDialog();
-            table = helper.GetDataTable(
-                "SELECT typeId, name " +
-                "FROM types");
-            gridTypes.DataContext = table.DefaultView;
+            try
+            {
+                EditType win = new EditType(Convert.ToInt32(gridTypes.SelectedValue));
+                win.ShowDialog();
+                table = helper.GetDataTable(
+                    "SELECT typeId, name " +
+                    "FROM types");
+                gridTypes.DataContext = table.DefaultView;
+            }
+            catch (IndexOutOfRangeException oops) { } //Click w/o any selection
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            DataTable rented = helper.GetDataTable( //Check if anything with this type is rented out
-            "SELECT rented.* " +
-            "FROM rented " +
-            "JOIN serials USING (serialId) " +
-            "JOIN series USING (seriesId) " +
-            "WHERE series.typeId=" + Convert.ToInt32(gridTypes.SelectedValue));
-
-            if (rented.Rows.Count != 0)
-                MessageBox.Show("Error: There exist items of this type with active rentals.");
-            else
+            try
             {
-                if (MessageBox.Show(
-                    "Are you sure you want to delete type \"" + ((DataRowView)gridTypes.SelectedItems[0])["name"] + "\"?\nAll items of this type will be deleted!",
-                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    helper.ExecuteNonQuery("DELETE FROM types WHERE typeId=" + gridTypes.SelectedValue);
-                    table = helper.GetDataTable(
-                        "SELECT typeId, name " +
-                        "FROM types");
-                    gridTypes.DataContext = table.DefaultView;
-                }
+                DataTable rented = helper.GetDataTable( //Check if anything with this type is rented out
+                            "SELECT rented.* " +
+                            "FROM rented " +
+                            "JOIN serials USING (serialId) " +
+                            "JOIN series USING (seriesId) " +
+                            "WHERE series.typeId=" + Convert.ToInt32(gridTypes.SelectedValue));
 
+                if (rented.Rows.Count != 0)
+                    MessageBox.Show("Error: There exist items of this type with active rentals.");
+                else
+                {
+                    if (MessageBox.Show(
+                        "Are you sure you want to delete type \"" + ((DataRowView)gridTypes.SelectedItems[0])["name"] + "\"?\nAll items of this type will be deleted!",
+                        "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        helper.ExecuteNonQuery("DELETE FROM types WHERE typeId=" + gridTypes.SelectedValue);
+                        table = helper.GetDataTable(
+                            "SELECT typeId, name " +
+                            "FROM types");
+                        gridTypes.DataContext = table.DefaultView;
+                    }
+
+                }
             }
+            catch (IndexOutOfRangeException oops) { } //Click w/o any selection
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -89,7 +97,7 @@ namespace Rental
 
         private void Select_Type(object sender, RoutedEventArgs e)
         {
-            //try
+            try
             {
                 DataTable vals = helper.GetDataTable(
                     "SELECT rentMultiplier,rentValue,hotMultiplier,hotValue,houseMultiplier,houseValue,depositMultiplier,depositValue,membershipMultiplier,membershipValue,overdueMultiplier,overdueValue " +
@@ -103,7 +111,7 @@ namespace Rental
                 membershipRate.DataContext = "Membership Rate: " + (((bool)items[8]) ? "x" : "+") + items[9].ToString();
                 overdueRate.DataContext = "Overdue Rate: " + (((bool)items[10]) ? "x" : "+") + items[11].ToString();
             }
-            //catch (IndexOutOfRangeException oops) { Console.WriteLine(oops.Message); } //New Type selects new row before table can update, causing this exception
+            catch (IndexOutOfRangeException oops) {  } //New Type selects new row before table can update, causing this exception
         }
     }
 }

@@ -40,9 +40,9 @@ namespace Rental
             if (e.Key == Key.Return)
             {
                 table = helper.GetDataTable( //TODO: select from datatable instead of database?
-                    "SELECT * " +
-                    "FROM customers " +
-                    "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
+                    "SELECT customers.*, memberships.name AS memName " +
+                    "FROM customers, memberships " +
+                    "WHERE memberships.membershipId=customers.membershipId AND (customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\")");
                 gridCustomers.DataContext = table.DefaultView;
             }
 
@@ -55,42 +55,50 @@ namespace Rental
             NewCustomer win = new NewCustomer();
             win.ShowDialog();
             table = helper.GetDataTable(
-                    "SELECT * " +
-                    "FROM customers " +
-                    "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
+                    "SELECT customers.*, memberships.name AS memName " +
+                    "FROM customers, memberships " +
+                    "WHERE memberships.membershipId=customers.membershipId AND (customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\")");
             gridCustomers.DataContext = table.DefaultView;
         }
 
         private void EditCustomer_Click(object sender, RoutedEventArgs e)
         {
-            EditCustomer win = new EditCustomer(Convert.ToInt32(gridCustomers.SelectedValue));
-            win.ShowDialog();
-            table = helper.GetDataTable(
-                    "SELECT * " +
-                    "FROM customers " +
-                    "WHERE customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\"");
-            gridCustomers.DataContext = table.DefaultView;
+            try
+            {
+                EditCustomer win = new EditCustomer(Convert.ToInt32(gridCustomers.SelectedValue));
+                win.ShowDialog();
+                table = helper.GetDataTable(
+                    "SELECT customers.*, memberships.name AS memName " +
+                    "FROM customers, memberships " +
+                    "WHERE memberships.membershipId=customers.membershipId AND (customers.code LIKE \"%" + search.Text + "%\" OR customers.name LIKE \"%" + search.Text + "%\")");
+                gridCustomers.DataContext = table.DefaultView;
+            }
+            catch (IndexOutOfRangeException oops) { } //Click w/o any selection
         }
 
         private void DeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
-            DataTable rented = helper.GetDataTable("SELECT rented.* FROM rented, customers WHERE rented.customerId=" + Convert.ToInt32(gridCustomers.SelectedValue));
-            if (rented.Rows.Count != 0)
-                MessageBox.Show("Error: Customer has active rentals.");
-            else
+            try
             {
-                if (MessageBox.Show(
-                    "Are you sure you want to delete customer \"" + ((DataRowView)gridCustomers.SelectedItems[0])["name"] + "\"?",
-                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                DataTable rented = helper.GetDataTable("SELECT rented.* FROM rented, customers WHERE rented.customerId=" + Convert.ToInt32(gridCustomers.SelectedValue));
+                if (rented.Rows.Count != 0)
+                    MessageBox.Show("Error: Customer has active rentals.");
+                else
                 {
-                    helper.ExecuteNonQuery("DELETE FROM customers WHERE customerId=" + gridCustomers.SelectedValue);
-                    table = helper.GetDataTable(
-                         "SELECT customers.*, memberships.name AS memName " +
-                         "FROM customers, memberships " +
-                         "WHERE memberships.membershipId=customers.membershipId");
-                    gridCustomers.DataContext = table.DefaultView;
+                    if (MessageBox.Show(
+                        "Are you sure you want to delete customer \"" + ((DataRowView)gridCustomers.SelectedItems[0])["name"] + "\"?",
+                        "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        helper.ExecuteNonQuery("DELETE FROM customers WHERE customerId=" + gridCustomers.SelectedValue);
+                        table = helper.GetDataTable(
+                             "SELECT customers.*, memberships.name AS memName " +
+                             "FROM customers, memberships " +
+                             "WHERE memberships.membershipId=customers.membershipId");
+                        gridCustomers.DataContext = table.DefaultView;
+                    }
                 }
             }
+            catch (IndexOutOfRangeException oops) { } //Click w/o any selection
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)

@@ -46,28 +46,37 @@ namespace Rental
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            EditMembership win = new EditMembership(Convert.ToInt32(gridMemberships.SelectedValue));
-            win.ShowDialog();
-            table = helper.GetDataTable("SELECT * FROM memberships");
-            gridMemberships.DataContext = table.DefaultView;
+            try
+            {
+                EditMembership win = new EditMembership(Convert.ToInt32(gridMemberships.SelectedValue));
+                win.ShowDialog();
+                table = helper.GetDataTable("SELECT * FROM memberships");
+                gridMemberships.DataContext = table.DefaultView;
+            }
+            catch (IndexOutOfRangeException oops) { } //Click w/o any selection
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            DataTable children = helper.GetDataTable("SELECT * FROM customers WHERE membershipId=" + Convert.ToInt32(gridMemberships.SelectedValue));
-            if (children.Rows.Count != 0)
-                MessageBox.Show("Error: There exist customers with this membership.");
-            else
+            try
             {
-                if (MessageBox.Show(
-                    "Are you sure you want to delete membership type \"" + gridMemberships.SelectedItems[0] + "\" ?",
-                    "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                DataTable children = helper.GetDataTable("SELECT * FROM customers WHERE membershipId=" + Convert.ToInt32(gridMemberships.SelectedValue));
+                if (children.Rows.Count != 0)
+                    MessageBox.Show("Error: There exist customers with this membership.");
+                else
                 {
-                    helper.ExecuteNonQuery("DELETE FROM memberships WHERE membershipId=" + gridMemberships.SelectedValue);
-                    table = helper.GetDataTable("SELECT * FROM memberships");
-                    gridMemberships.DataContext = table.DefaultView;
+                    if (MessageBox.Show(
+                        "Are you sure you want to delete membership type \"" + gridMemberships.SelectedItems[0] + "\" ?",
+                        "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        helper.ExecuteNonQuery("DELETE FROM memberships WHERE membershipId=" + gridMemberships.SelectedValue);
+                        table = helper.GetDataTable("SELECT * FROM memberships");
+                        gridMemberships.DataContext = table.DefaultView;
+                    }
                 }
             }
+            
+            catch (IndexOutOfRangeException oops) { } //Click w/o any selection
         }
 
         private void Finish_Click(object sender, RoutedEventArgs e)
