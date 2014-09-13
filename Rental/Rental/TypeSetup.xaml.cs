@@ -99,6 +99,9 @@ namespace Rental
         {
             try
             {
+                if (gridTypes.SelectedValue == null) //Closing a dialogue selects a row before the table can update
+                    throw new IndexOutOfRangeException();
+
                 DataTable vals = helper.GetDataTable(
                     "SELECT rentMultiplier,rentValue,hotMultiplier,hotValue,houseMultiplier,houseValue,depositMultiplier,depositValue,membershipMultiplier,membershipValue,overdueMultiplier,overdueValue " +
                     "FROM types WHERE typeId=" + gridTypes.SelectedValue);
