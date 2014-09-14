@@ -39,7 +39,7 @@ namespace Rental
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             string sql =
-                "INSERT INTO customers (title,typeId,author,publisher,reference,defaultPrice,finished) " +
+                "INSERT INTO series (title,typeId,artist,publisher,reference,defaultPrice,finished) " +
                 "VALUES (\"" +
                 title.Text + "\", \"" +
                 type.SelectedValue + "\", \"" +

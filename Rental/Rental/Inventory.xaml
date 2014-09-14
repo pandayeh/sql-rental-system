@@ -34,8 +34,16 @@
                 </Menu>
                 <StackPanel></StackPanel>
             </DockPanel>
-            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+            <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AutoGenerateColumns="False" IsReadOnly="True" SelectedValuePath="seriesId"
                   Name="gridInv" ItemsSource="{Binding Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="0,22,207,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Type" Binding="{Binding type}" Width="1*" />
+                    <DataGridTextColumn Header="Title" Binding="{Binding title}" Width="3*" />
+                    <DataGridTextColumn Header="疵" Binding="{Binding finished}" Width="1*" />
+                    <DataGridTextColumn Header="Artist" Binding="{Binding artist}" Width="2*" />
+                    <DataGridTextColumn Header="Publisher" Binding="{Binding publisher}" Width="2*" />
+                    <DataGridTextColumn Header="Reference" Binding="{Binding reference}" Width="1*" />
+                </DataGrid.Columns>
             </DataGrid>
 
             <Border HorizontalAlignment="Right" Margin="0,22,0,0" BorderBrush="Black" BorderThickness="1">
