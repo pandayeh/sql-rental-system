@@ -42,17 +42,6 @@ namespace Rental
 
         }
 
-        private void NewItem_Click(object sender, RoutedEventArgs e)
-        {
-            NewSeries win = new NewSeries();
-            win.ShowDialog();
-            table = helper.GetDataTable( //TODO: Implement volume sets
-                "SELECT series.*, types.name AS type " +
-                "FROM series, types " +
-                "WHERE types.typeId=series.typeId");
-            gridInv.DataContext = table.DefaultView;
-        }
-
         private void search_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Return)
@@ -60,6 +49,36 @@ namespace Rental
                     "SELECT series.*, types.name AS type " +
                     "FROM series, types " +
                     "WHERE types.typeId=series.typeId AND (customers.code=" + search.Text + " OR customers.name=" + search.Text + ")");
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Details_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Serials_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

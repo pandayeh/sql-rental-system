@@ -73,13 +73,13 @@
                         </TextBox.Triggers>
                     </TextBox>
 
-                    <Button Height="50" Width="100" Click="NewItem_Click">New Item</Button>
-                    <Button Height="50" Width="100">Edit</Button>
-                    <Button Height="50" Width="100">Delete</Button>
-                    <Button Height="50" Width="100">Search</Button>
-                    <Button Height="50" Width="100">Details</Button>
-                    <Button Height="50" Width="100">Serials</Button>
-                    <Button Height="50" Width="100">Exit</Button>
+                    <Button Height="50" Width="100" Click="NewSeries_Click">New Series</Button>
+                    <Button Height="50" Width="100" Click="Edit_Click">Edit</Button>
+                    <Button Height="50" Width="100" Click="Delete_Click">Delete</Button>
+                    <Button Height="50" Width="100" Click="Search_Click">Search</Button>
+                    <Button Height="50" Width="100" Click="Details_Click">Details</Button>
+                    <Button Height="50" Width="100" Click="Serials_Click">Serials</Button>
+                    <Button Height="50" Width="100" Click="Exit_Click">Exit</Button>
 
                 </StackPanel>
             </Border>
