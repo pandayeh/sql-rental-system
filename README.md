@@ -1,4 +1,6 @@
-Lionfish Rentals (Status: On Hiatus. Will resume November 1st)
+Lionfish Rentals
+=================
+(Status: On Hiatus. Will resume November 1st)
 =================
 
 Rental/retail system, written using C# and SQLite.
